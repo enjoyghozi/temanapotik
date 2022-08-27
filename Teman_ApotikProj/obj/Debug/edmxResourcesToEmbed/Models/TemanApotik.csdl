@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TemanApotikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Harga">
+    <Key>
+      <PropertyRef Name="Id_Harga" />
+    </Key>
+    <Property Name="Id_Harga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Obat" Type="Int32" />
+    <Property Name="Id_Jenis_Obat" Type="Int32" />
+    <Property Name="Harga_Awal" Type="Int32" />
+    <Property Name="Diskon" Type="Int32" />
+    <Property Name="Harga_Akhir" Type="Int32" />
+    <NavigationProperty Name="Obat" Relationship="Self.FK_Harga_Obat" FromRole="Harga" ToRole="Obat" />
+  </EntityType>
+  <EntityType Name="JenisObat">
+    <Key>
+      <PropertyRef Name="Id_Jenis_Obat" />
+    </Key>
+    <Property Name="Id_Jenis_Obat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Jenis_Obat" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Obat" Relationship="Self.FK_Obat_JenisObat" FromRole="JenisObat" ToRole="Obat" />
+  </EntityType>
+  <EntityType Name="Obat">
+    <Key>
+      <PropertyRef Name="Id_Obat" />
+    </Key>
+    <Property Name="Id_Obat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kode_Obat" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Nama_Obat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Jenis_Obat" Type="Int32" />
+    <NavigationProperty Name="Harga" Relationship="Self.FK_Harga_Obat" FromRole="Obat" ToRole="Harga" />
+    <NavigationProperty Name="JenisObat" Relationship="Self.FK_Obat_JenisObat" FromRole="Obat" ToRole="JenisObat" />
+    <NavigationProperty Name="ObatKeluar" Relationship="Self.FK_ObatKeluar_Obat" FromRole="Obat" ToRole="ObatKeluar" />
+    <NavigationProperty Name="ObatMasuk" Relationship="Self.FK_ObatMasuk_Obat" FromRole="Obat" ToRole="ObatMasuk" />
+    <NavigationProperty Name="StokObat" Relationship="Self.FK_StokObat_Obat" FromRole="Obat" ToRole="StokObat" />
+  </EntityType>
+  <EntityType Name="ObatKeluar">
+    <Key>
+      <PropertyRef Name="Id_Transaksi_Keluar" />
+    </Key>
+    <Property Name="Id_Transaksi_Keluar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tgl_Keluar" Type="DateTime" Precision="3" />
+    <Property Name="Id_Pasien" Type="Int32" />
+    <Property Name="Id_Obat" Type="Int32" />
+    <Property Name="Id_Jenis_Obat" Type="Int32" />
+    <Property Name="Jumlah_Keluar" Type="Int32" />
+    <Property Name="Total_Harga" Type="Int32" />
+    <NavigationProperty Name="Obat" Relationship="Self.FK_ObatKeluar_Obat" FromRole="ObatKeluar" ToRole="Obat" />
+    <NavigationProperty Name="Pasien" Relationship="Self.FK_ObatKeluar_Pasien" FromRole="ObatKeluar" ToRole="Pasien" />
+  </EntityType>
+  <EntityType Name="ObatMasuk">
+    <Key>
+      <PropertyRef Name="Id_Transaksi_Masuk" />
+    </Key>
+    <Property Name="Id_Transaksi_Masuk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Obat" Type="Int32" />
+    <Property Name="Tgl_Masuk" Type="DateTime" Precision="3" />
+    <Property Name="Id_Supplier" Type="Int32" />
+    <Property Name="Id_Jenis_Obat" Type="Int32" />
+    <Property Name="Jumlah_Masuk" Type="Int32" />
+    <Property Name="Harga_Beli" Type="Int32" />
+    <NavigationProperty Name="Obat" Relationship="Self.FK_ObatMasuk_Obat" FromRole="ObatMasuk" ToRole="Obat" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_ObatMasuk_Supplier" FromRole="ObatMasuk" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="Pasien">
+    <Key>
+      <PropertyRef Name="Id_Pasien" />
+    </Key>
+    <Property Name="Id_Pasien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nama_Pasien" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Alamat_Pasien" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Diagnosa_Penyakit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ObatKeluar" Relationship="Self.FK_ObatKeluar_Pasien" FromRole="Pasien" ToRole="ObatKeluar" />
+  </EntityType>
+  <EntityType Name="StokObat">
+    <Key>
+      <PropertyRef Name="Id_Stok_Obat" />
+    </Key>
+    <Property Name="Id_Stok_Obat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Obat" Type="Int32" />
+    <Property Name="id_Jenis_Obat" Type="Int32" />
+    <Property Name="Stock_In_Hand" Type="Int32" />
+    <NavigationProperty Name="Obat" Relationship="Self.FK_StokObat_Obat" FromRole="StokObat" ToRole="Obat" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Id_Supplier" />
+    </Key>
+    <Property Name="Id_Supplier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nama_Suplier" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Jenis_Obat" Type="Int32" />
+    <Property Name="Alamat_Supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ObatMasuk" Relationship="Self.FK_ObatMasuk_Supplier" FromRole="Supplier" ToRole="ObatMasuk" />
+  </EntityType>
+  <Association Name="FK_Harga_Obat">
+    <End Role="Obat" Type="Self.Obat" Multiplicity="0..1" />
+    <End Role="Harga" Type="Self.Harga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Obat">
+        <PropertyRef Name="Id_Obat" />
+      </Principal>
+      <Dependent Role="Harga">
+        <PropertyRef Name="Id_Obat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obat_JenisObat">
+    <End Role="JenisObat" Type="Self.JenisObat" Multiplicity="0..1" />
+    <End Role="Obat" Type="Self.Obat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JenisObat">
+        <PropertyRef Name="Id_Jenis_Obat" />
+      </Principal>
+      <Dependent Role="Obat">
+        <PropertyRef Name="Id_Jenis_Obat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObatKeluar_Obat">
+    <End Role="Obat" Type="Self.Obat" Multiplicity="0..1" />
+    <End Role="ObatKeluar" Type="Self.ObatKeluar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Obat">
+        <PropertyRef Name="Id_Obat" />
+      </Principal>
+      <Dependent Role="ObatKeluar">
+        <PropertyRef Name="Id_Obat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObatMasuk_Obat">
+    <End Role="Obat" Type="Self.Obat" Multiplicity="0..1" />
+    <End Role="ObatMasuk" Type="Self.ObatMasuk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Obat">
+        <PropertyRef Name="Id_Obat" />
+      </Principal>
+      <Dependent Role="ObatMasuk">
+        <PropertyRef Name="Id_Obat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StokObat_Obat">
+    <End Role="Obat" Type="Self.Obat" Multiplicity="0..1" />
+    <End Role="StokObat" Type="Self.StokObat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Obat">
+        <PropertyRef Name="Id_Obat" />
+      </Principal>
+      <Dependent Role="StokObat">
+        <PropertyRef Name="Id_Obat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObatKeluar_Pasien">
+    <End Role="Pasien" Type="Self.Pasien" Multiplicity="0..1" />
+    <End Role="ObatKeluar" Type="Self.ObatKeluar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pasien">
+        <PropertyRef Name="Id_Pasien" />
+      </Principal>
+      <Dependent Role="ObatKeluar">
+        <PropertyRef Name="Id_Pasien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObatMasuk_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="ObatMasuk" Type="Self.ObatMasuk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Id_Supplier" />
+      </Principal>
+      <Dependent Role="ObatMasuk">
+        <PropertyRef Name="Id_Supplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TemanApotikkEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Harga" EntityType="Self.Harga" />
+    <EntitySet Name="JenisObat" EntityType="Self.JenisObat" />
+    <EntitySet Name="Obat" EntityType="Self.Obat" />
+    <EntitySet Name="ObatKeluar" EntityType="Self.ObatKeluar" />
+    <EntitySet Name="ObatMasuk" EntityType="Self.ObatMasuk" />
+    <EntitySet Name="Pasien" EntityType="Self.Pasien" />
+    <EntitySet Name="StokObat" EntityType="Self.StokObat" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+    <AssociationSet Name="FK_Harga_Obat" Association="Self.FK_Harga_Obat">
+      <End Role="Obat" EntitySet="Obat" />
+      <End Role="Harga" EntitySet="Harga" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obat_JenisObat" Association="Self.FK_Obat_JenisObat">
+      <End Role="JenisObat" EntitySet="JenisObat" />
+      <End Role="Obat" EntitySet="Obat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObatKeluar_Obat" Association="Self.FK_ObatKeluar_Obat">
+      <End Role="Obat" EntitySet="Obat" />
+      <End Role="ObatKeluar" EntitySet="ObatKeluar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObatMasuk_Obat" Association="Self.FK_ObatMasuk_Obat">
+      <End Role="Obat" EntitySet="Obat" />
+      <End Role="ObatMasuk" EntitySet="ObatMasuk" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StokObat_Obat" Association="Self.FK_StokObat_Obat">
+      <End Role="Obat" EntitySet="Obat" />
+      <End Role="StokObat" EntitySet="StokObat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObatKeluar_Pasien" Association="Self.FK_ObatKeluar_Pasien">
+      <End Role="Pasien" EntitySet="Pasien" />
+      <End Role="ObatKeluar" EntitySet="ObatKeluar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObatMasuk_Supplier" Association="Self.FK_ObatMasuk_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="ObatMasuk" EntitySet="ObatMasuk" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

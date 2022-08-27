@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<Teman_ApotikProj.Models.Supplier>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index Supplier</h2>
+
+<p class="navbar-right">
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Cari berdasarkan nama obat : @Html.TextBox("SearchString")
+        <input type="submit" value="Cari" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Nama Supplier", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("ID Jenis Obat", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.DisplayName("Alamat Supplier")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama_Suplier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Jenis_Obat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alamat_Supplier)
+            </td>
+            <td>
+                @Html.ActionLink("Ubah", "Edit", new { id = item.Id_Supplier }) |
+                @Html.ActionLink("Detail", "Details", new { id = item.Id_Supplier }) |
+                @Html.ActionLink("Hapus", "Delete", new { id = item.Id_Supplier })
+            </td>
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

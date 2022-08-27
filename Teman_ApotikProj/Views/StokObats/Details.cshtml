@@ -1,0 +1,41 @@
+﻿@model Teman_ApotikProj.Models.StokObat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detail Stok Obat</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("ID Jenis Obat")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_Jenis_Obat)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Stok Tersedia")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock_In_Hand)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Kode Obat")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obat.Kode_Obat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Ubah", "Edit", new { id = Model.Id_Stok_Obat }) |
+    @Html.ActionLink("Kembali ke List", "Index")
+</p>

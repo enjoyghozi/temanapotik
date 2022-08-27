@@ -1,0 +1,31 @@
+﻿@model Teman_ApotikProj.Models.JenisObat
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Hapus Data</h2>
+
+<h3>Apa anda yakin ingin mernghapus data ini?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Jenis Obat")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jenis_Obat)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Hapus" class="btn btn-default" /> |
+            @Html.ActionLink("Kembali ke List", "Index")
+        </div>
+    }
+</div>

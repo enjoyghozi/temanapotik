@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TemanApotikModelStoreContainer" CdmEntityContainer="TemanApotikkEntities">
+    <EntitySetMapping Name="Harga">
+      <EntityTypeMapping TypeName="TemanApotikModel.Harga">
+        <MappingFragment StoreEntitySet="Harga">
+          <ScalarProperty Name="Id_Harga" ColumnName="Id_Harga" />
+          <ScalarProperty Name="Id_Obat" ColumnName="Id_Obat" />
+          <ScalarProperty Name="Id_Jenis_Obat" ColumnName="Id_Jenis_Obat" />
+          <ScalarProperty Name="Harga_Awal" ColumnName="Harga_Awal" />
+          <ScalarProperty Name="Diskon" ColumnName="Diskon" />
+          <ScalarProperty Name="Harga_Akhir" ColumnName="Harga_Akhir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JenisObat">
+      <EntityTypeMapping TypeName="TemanApotikModel.JenisObat">
+        <MappingFragment StoreEntitySet="JenisObat">
+          <ScalarProperty Name="Id_Jenis_Obat" ColumnName="Id_Jenis_Obat" />
+          <ScalarProperty Name="Jenis_Obat" ColumnName="Jenis_Obat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Obat">
+      <EntityTypeMapping TypeName="TemanApotikModel.Obat">
+        <MappingFragment StoreEntitySet="Obat">
+          <ScalarProperty Name="Id_Obat" ColumnName="Id_Obat" />
+          <ScalarProperty Name="Kode_Obat" ColumnName="Kode_Obat" />
+          <ScalarProperty Name="Nama_Obat" ColumnName="Nama_Obat" />
+          <ScalarProperty Name="Id_Jenis_Obat" ColumnName="Id_Jenis_Obat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObatKeluar">
+      <EntityTypeMapping TypeName="TemanApotikModel.ObatKeluar">
+        <MappingFragment StoreEntitySet="ObatKeluar">
+          <ScalarProperty Name="Id_Transaksi_Keluar" ColumnName="Id_Transaksi_Keluar" />
+          <ScalarProperty Name="Tgl_Keluar" ColumnName="Tgl_Keluar" />
+          <ScalarProperty Name="Id_Pasien" ColumnName="Id_Pasien" />
+          <ScalarProperty Name="Id_Obat" ColumnName="Id_Obat" />
+          <ScalarProperty Name="Id_Jenis_Obat" ColumnName="Id_Jenis_Obat" />
+          <ScalarProperty Name="Jumlah_Keluar" ColumnName="Jumlah_Keluar" />
+          <ScalarProperty Name="Total_Harga" ColumnName="Total_Harga" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObatMasuk">
+      <EntityTypeMapping TypeName="TemanApotikModel.ObatMasuk">
+        <MappingFragment StoreEntitySet="ObatMasuk">
+          <ScalarProperty Name="Id_Transaksi_Masuk" ColumnName="Id_Transaksi_Masuk" />
+          <ScalarProperty Name="Id_Obat" ColumnName="Id_Obat" />
+          <ScalarProperty Name="Tgl_Masuk" ColumnName="Tgl_Masuk" />
+          <ScalarProperty Name="Id_Supplier" ColumnName="Id_Supplier" />
+          <ScalarProperty Name="Id_Jenis_Obat" ColumnName="Id_Jenis_Obat" />
+          <ScalarProperty Name="Jumlah_Masuk" ColumnName="Jumlah_Masuk" />
+          <ScalarProperty Name="Harga_Beli" ColumnName="Harga_Beli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pasien">
+      <EntityTypeMapping TypeName="TemanApotikModel.Pasien">
+        <MappingFragment StoreEntitySet="Pasien">
+          <ScalarProperty Name="Id_Pasien" ColumnName="Id_Pasien" />
+          <ScalarProperty Name="Nama_Pasien" ColumnName="Nama_Pasien" />
+          <ScalarProperty Name="Alamat_Pasien" ColumnName="Alamat_Pasien" />
+          <ScalarProperty Name="Diagnosa_Penyakit" ColumnName="Diagnosa_Penyakit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StokObat">
+      <EntityTypeMapping TypeName="TemanApotikModel.StokObat">
+        <MappingFragment StoreEntitySet="StokObat">
+          <ScalarProperty Name="Id_Stok_Obat" ColumnName="Id_Stok_Obat" />
+          <ScalarProperty Name="Id_Obat" ColumnName="Id_Obat" />
+          <ScalarProperty Name="id_Jenis_Obat" ColumnName="id_Jenis_Obat" />
+          <ScalarProperty Name="Stock_In_Hand" ColumnName="Stock_In_Hand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supplier">
+      <EntityTypeMapping TypeName="TemanApotikModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="Id_Supplier" ColumnName="Id_Supplier" />
+          <ScalarProperty Name="Nama_Suplier" ColumnName="Nama_Suplier" />
+          <ScalarProperty Name="Id_Jenis_Obat" ColumnName="Id_Jenis_Obat" />
+          <ScalarProperty Name="Alamat_Supplier" ColumnName="Alamat_Supplier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

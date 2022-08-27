@@ -1,0 +1,63 @@
+﻿@model Teman_ApotikProj.Models.Harga
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Data</h2>
+
+<h3>Apa anda yakin ingin menghapus data ini?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("ID Jenis Obat")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Jenis_Obat)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Harga Awal")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Harga_Awal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diskon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diskon)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Harga Akhir")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Harga_Akhir)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Obat Keluar")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obat.Kode_Obat)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Hapus" class="btn btn-default" /> |
+            @Html.ActionLink("Kembali ke List", "Index")
+        </div>
+    }
+</div>

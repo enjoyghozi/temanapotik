@@ -1,0 +1,24 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@{
+    ViewBag.Title = "Add New Role";
+}
+<h2>Add New Role:</h2>
+<style type="text/css">
+    #tbrole, .c {
+        border: double;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <table style="width:40%; border:solid 4px red; background-color:skyblue; padding:10px;">
+        <tr>
+            <td style="background:green; color:white; padding:10px;">Role Name:</td>
+            <td style="background:green; color:white; padding:10px;">
+                @Html.EditorFor(m => m.Name)
+            </td>
+        </tr>
+        <tr><td style="height:20px;" colspan="2"></td></tr>
+        <tr><td></td><td><input type="submit" value="Create Role" /></td></tr>
+        <tr><td style="height:20px;" colspan="2"></td></tr>
+    </table>
+}

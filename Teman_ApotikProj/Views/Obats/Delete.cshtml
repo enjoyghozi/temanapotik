@@ -1,0 +1,47 @@
+﻿@model Teman_ApotikProj.Models.Obat
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Apa anda yakin ingin menghapus data ini</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Kode Obat")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kode_Obat)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Nama Obat")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nama_Obat)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Jenis Obat")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JenisObat.Jenis_Obat)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Hapus" class="btn btn-default" /> |
+            @Html.ActionLink("Kembali ke List", "Index")
+        </div>
+    }
+</div>
